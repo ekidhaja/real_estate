@@ -32,7 +32,8 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         linkName='/search?purpose=for-rent'
         imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4'
       />
-      {/* display properties for rent */}
+
+      {/* looping through properties for rent and displaying them */}
       <Flex flexWrap='wrap'>
         {propertiesForRent.map((property) => <Property property={property} key={property.id} />)}
       </Flex>
@@ -47,7 +48,8 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         linkName='/search?purpose=for-sale'
         imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
       />
-      {/* display properties for sale */}
+
+      {/* looping through properties for sale and displaying them */}
       <Flex flexWrap='wrap'>
         {propertiesForSale.map((property) => <Property property={property} key={property.id} />)}
       </Flex>
@@ -55,6 +57,8 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
   )
 }
 
+/*fetching forSale and forRent properties from RapidApi 
+** and passing it into Home component as props*/
 export async function getStaticProps() {
   const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`);
   const propertyForRent = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`);
