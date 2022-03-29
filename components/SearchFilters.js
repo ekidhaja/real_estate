@@ -16,18 +16,20 @@ export default function SearchFilters() {
   //const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  // A function to set search properties based on filter values
   const searchProperties = (filterValues) => {
     const path = router.pathname;
     const { query } = router;
 
+    //set each search item based on the selected filter value
     const values = getFilterValues(filterValues)
-
     values.forEach((item) => {
       if(item.value && filterValues?.[item.name]) {
         query[item.name] = item.value
       }
-    })
+    });
 
+    //reset the url with the new search values
     router.push({ pathname: path, query: query });
   };
 
@@ -53,6 +55,8 @@ export default function SearchFilters() {
   //console.log('locations: ', locationData)
   return (
     <Flex bg='gray.100' p='4' justifyContent='center' flexWrap='wrap'>
+
+      {/* displaying search filter select boxes */}
       {filters?.map((filter) => (
         <Box key={filter.queryName}>
           <Select onChange={(e) => searchProperties({ [filter.queryName]: e.target.value })} placeholder={filter.placeholder} w='fit-content' p='2' >
@@ -64,6 +68,7 @@ export default function SearchFilters() {
           </Select>
         </Box>
       ))}
+
       {/*<Flex flexDir='column'>
         <Button onClick={() => setShowLocations(!showLocations)} border='1px' borderColor='gray.200' marginTop='2' >
           Search Location
