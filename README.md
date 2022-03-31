@@ -2,6 +2,8 @@
 
 [View project live demo](https://real-estate-ekidhaja.vercel.app/)
 
+![Preview](./public/realtor_preview.png)
+
 ## Description
 
 The goal of this project is to allow visitors to explore real estate in the UAE. It fetches real estate data from [Bayut API](https://rapidapi.com/apidojo/api/bayut/) hosted on the world's larget APIs hub [Rapid API Hub](https://rapidapi.com/). The App is fully responsive and displays well on mobile devices too.
